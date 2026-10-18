@@ -1,0 +1,90 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: "Outfit", ui-sans-serif, system-ui, sans-serif;
+  --font-display: "Fraunces", Georgia, "Times New Roman", serif;
+
+  --color-ink: #1c1410;
+  --color-ink-soft: #3a2e26;
+  --color-paper: #f4efe6;
+  --color-card: #fffaf3;
+  --color-line: #e3d6c4;
+  --color-muted: #73685c;
+  --color-green: #1b6b45;
+  --color-green-soft: #e4f3ea;
+  --color-gold: #c4841d;
+  --color-gold-soft: #fbf3df;
+  --color-clay: #b6402c;
+  --color-clay-soft: #fdecea;
+  --color-star: #8a5a12;
+}
+
+@layer base {
+  html,
+  body {
+    background: var(--color-paper);
+    color: var(--color-ink);
+    font-family: var(--font-sans);
+  }
+
+  body {
+    min-height: 100vh;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled),
+  summary {
+    cursor: pointer;
+  }
+
+  button,
+  a,
+  summary {
+    touch-action: manipulation;
+  }
+
+  :focus-visible {
+    outline: 2px solid var(--color-gold);
+    outline-offset: 2px;
+  }
+}
+
+@keyframes tile-pop {
+  0% {
+    transform: scale(0.94);
+  }
+  60% {
+    transform: scale(1.04);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+@keyframes tile-shake {
+  0%,
+  100% {
+    transform: translateX(0);
+  }
+  25% {
+    transform: translateX(-5px);
+  }
+  75% {
+    transform: translateX(5px);
+  }
+}
+
+.animate-pop {
+  animation: tile-pop 0.22s ease-out;
+}
+
+.animate-shake {
+  animation: tile-shake 0.28s ease-in-out;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-pop,
+  .animate-shake {
+    animation: none;
+  }
+}
